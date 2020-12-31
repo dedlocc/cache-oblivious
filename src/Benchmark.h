@@ -9,7 +9,7 @@
 
 struct Benchmark
 {
-	std::vector<std::chrono::milliseconds::rep> timings;
+    std::vector<std::chrono::milliseconds::rep> timings;
 
     Benchmark(const size_t &, const std::function<void(void)> &);
 

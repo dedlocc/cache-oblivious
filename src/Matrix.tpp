@@ -83,12 +83,12 @@ void Matrix<T>::transposeCacheOblivious(
     const size_t &block,
     T **&a
 ) {
-	if (1 == dx && 1 == dy) {
-		a[y0][x0] = arr[x0][y0];
-		return;
-	}
+    if (1 == dx && 1 == dy) {
+        a[y0][x0] = arr[x0][y0];
+        return;
+    }
 
-	if (dx <= block && dy <= block) {
+    if (dx <= block && dy <= block) {
         const auto x1 = x0 + dx;
         const auto y1 = y0 + dy;
         for (size_t i = x0; i < x1; ++i) {

@@ -6,7 +6,7 @@
 
 int main()
 {
-	std::ofstream fout("out.txt");
+    std::ofstream fout("out.txt");
 
     for (size_t i = 2500; i <= 50000; i += 2500) {
         std::cout << i << std::endl;
@@ -22,5 +22,5 @@ int main()
             << Benchmark(20, [&m] { m.transposeCacheOblivious(512); }) << '\n' << std::endl;
     }
 
-	return 0;
+    return 0;
 }
