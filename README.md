@@ -12,7 +12,7 @@ of cache misses while handling "small" blocks as in the first approach.
 
 These algorithms were compared by transposing the same square matrices.
 Each algorithm was applied 20 times to each of the matrices of size
-from 1250 to 50,000 with a step of 1250.
+from 2500 to 50,000 with a step of 2500.
 
 The matrices are filled randomly with numbers from 0 to 10 stored in `char8_t`
 type (which was introduced in C++20).
