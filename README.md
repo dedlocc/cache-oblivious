@@ -18,7 +18,7 @@ The matrices are filled randomly with numbers from 0 to 10 stored in `char8_t`
 type (which was introduced in C++20).
 
 The benchmarks were made by compiling the sources using
-[MinGW-w64](https://github.com/brechtsanders/winlibs_mingw)
+GCC 10.2.0 from [MinGW-w64](https://github.com/brechtsanders/winlibs_mingw)
 in `Release` mode with `-O3` optimization level. The program was run on an
 `Intel Core i7 6850K` running machine.
 
@@ -26,6 +26,6 @@ in `Release` mode with `-O3` optimization level. The program was run on an
 
 You can see that the 3rd approach turned out to be the fastest one, almost
 independent of the block size. Cache-oblivious algorithm without blocks
-(i.e. with 1x1 blocks) seems to be the less efficient.
+(i.e. with 1x1 blocks) seems to be the least efficient.
 
 The full statistics can be found [here](https://docs.google.com/spreadsheets/d/1uhRudLe5n1RtDhlz7ur5ef-Zy96_-FDRbsC2_cTe_g0/).
