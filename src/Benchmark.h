@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef CACHE_OBLIVIOUS_BENCHMARK_H
-#define CACHE_OBLIVIOUS_BENCHMARK_H
-
 #include <chrono>
 #include <functional>
 #include <iomanip>
@@ -11,9 +8,7 @@ struct Benchmark
 {
     std::vector<std::chrono::milliseconds::rep> timings;
 
-    Benchmark(const size_t &, const std::function<void(void)> &);
+    Benchmark(size_t n, std::function<void(void)> const &foo);
 
-    friend std::ostream &operator<<(std::ostream &, const Benchmark &);
+    friend std::ostream &operator<<(std::ostream &out, Benchmark const &bm);
 };
-
-#endif //CACHE_OBLIVIOUS_BENCHMARK_H

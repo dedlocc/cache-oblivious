@@ -1,36 +1,29 @@
 #pragma once
 
-#ifndef CACHE_OBLIVIOUS_MATRIX_H
-#define CACHE_OBLIVIOUS_MATRIX_H
-
 #include "Random.h"
 
-template<class T>
+template <class T>
 class Matrix
 {
 public:
-    explicit Matrix(const size_t &, const T &, const T &);
+    explicit Matrix(size_t size, T min, T max);
 
-    ~Matrix();
+    Matrix(Matrix const &) = delete;
 
     void transposeNaive();
 
-    void transposeCacheOblivious(const size_t & = 32);
+    void transposeCacheOblivious(size_t blockSize = 32);
 
-    template<class T_>
-    friend std::ostream &operator<<(std::ostream &, const Matrix<T_> &);
+    template <class U>
+    friend std::ostream &operator<<(std::ostream &, Matrix<U> const &);
 
 private:
-    const size_t size;
-    T **arr;
+    size_t const size;
+    std::vector<T> arr;
 
-    T **alloc(const size_t &);
+    void swapAt(size_t x, size_t y);
 
-    void free(T **&);
-
-    void transposeCacheOblivious(const size_t &, const size_t &, const size_t &, const size_t &, const size_t &, T **&);
+    void transposeCacheOblivious(size_t x0, size_t y0, size_t dx, size_t dy, size_t blockSize);
 };
 
 #include "Matrix.tpp"
-
-#endif //CACHE_OBLIVIOUS_MATRIX_H

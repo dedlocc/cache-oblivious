@@ -1,29 +1,27 @@
+#include <numeric>
 #include "Benchmark.h"
 
 using namespace std::chrono;
 
-Benchmark::Benchmark(const size_t &n, const std::function<void(void)> &foo)
+Benchmark::Benchmark(size_t n, std::function<void(void)> const &foo)
 {
     timings.reserve(n);
     for (size_t i = 0; i < n; ++i) {
-        const auto start = high_resolution_clock::now();
+        auto start = high_resolution_clock::now();
         foo();
-        const auto stop = high_resolution_clock::now();
+        auto stop = high_resolution_clock::now();
         timings.emplace_back(duration_cast<milliseconds>(stop - start).count());
     }
 }
 
-std::ostream &operator<<(std::ostream &out, const Benchmark &m)
+std::ostream &operator<<(std::ostream &out, Benchmark const &bm)
 {
-    auto sum = duration_values<milliseconds::rep>::zero();
-    for (const auto &t : m.timings) {
-        sum += t;
-    }
+    auto sum = std::reduce(bm.timings.begin(), bm.timings.end());
 
-    //out << "avg: " << std::left << std::setw(8) << (sum + m.timings.size() / 2) / m.timings.size()
-    //    << "sum: " << sum << '\n';
+    out << "avg: " << std::left << std::setw(8) << (sum + bm.timings.size() / 2) / bm.timings.size()
+        << "sum: " << sum << '\n';
 
-    for (const auto &t : m.timings) {
+    for (auto &t : bm.timings) {
         out << t << ' ';
     }
 

@@ -1,19 +1,19 @@
 #pragma once
 
-#ifndef CACHE_OBLIVIOUS_RANDOM_H
-#define CACHE_OBLIVIOUS_RANDOM_H
-
 #include <random>
 
 class Random
 {
-    static inline std::mt19937 engine = std::mt19937{ std::random_device()() };
-public:
-    template<class T>
-    static T next(const T &min, const T &max)
+    static std::mt19937_64 &getEngine()
     {
-        return std::uniform_int_distribution<T>(min, max)(engine);
+        static std::mt19937_64 engine = std::mt19937_64 { std::random_device()() };
+        return engine;
+    }
+
+public:
+    template <class T>
+    static T next(T min, T max)
+    {
+        return std::uniform_int_distribution(min, max)(getEngine());
     }
 };
-
-#endif //CACHE_OBLIVIOUS_RANDOM_H
