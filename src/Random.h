@@ -4,9 +4,9 @@
 
 class Random
 {
-    static std::mt19937_64 &getEngine()
+    static std::mt19937_64 & getEngine()
     {
-        static std::mt19937_64 engine = std::mt19937_64 { std::random_device()() };
+        static std::mt19937_64 engine = std::mt19937_64 {std::random_device()()};
         return engine;
     }
 

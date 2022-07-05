@@ -8,7 +8,7 @@ struct Benchmark
 {
     std::vector<std::chrono::milliseconds::rep> timings;
 
-    Benchmark(size_t n, std::function<void(void)> const &foo);
+    Benchmark(size_t n, const std::function<void(void)> & foo);
 
-    friend std::ostream &operator<<(std::ostream &out, Benchmark const &bm);
+    friend std::ostream & operator<<(std::ostream & out, const Benchmark & bm);
 };

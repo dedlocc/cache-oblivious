@@ -31,7 +31,7 @@ void Matrix<T>::transposeCacheOblivious(size_t blockSize)
 }
 
 template <class T>
-std::ostream &operator<<(std::ostream &out, Matrix<T> const &m)
+std::ostream & operator<<(std::ostream & out, const Matrix<T> & m)
 {
     for (size_t i = 0; i < m.size; ++i) {
         for (size_t j = 0; j < m.size; ++j) {

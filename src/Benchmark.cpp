@@ -3,7 +3,7 @@
 
 using namespace std::chrono;
 
-Benchmark::Benchmark(size_t n, std::function<void(void)> const &foo)
+Benchmark::Benchmark(size_t n, const std::function<void(void)> & foo)
 {
     timings.reserve(n);
     for (size_t i = 0; i < n; ++i) {
@@ -14,14 +14,14 @@ Benchmark::Benchmark(size_t n, std::function<void(void)> const &foo)
     }
 }
 
-std::ostream &operator<<(std::ostream &out, Benchmark const &bm)
+std::ostream & operator<<(std::ostream & out, const Benchmark & bm)
 {
     auto sum = std::reduce(bm.timings.begin(), bm.timings.end());
 
     out << "avg: " << std::left << std::setw(8) << (sum + bm.timings.size() / 2) / bm.timings.size()
         << "sum: " << sum << '\n';
 
-    for (auto &t : bm.timings) {
+    for (auto & t : bm.timings) {
         out << t << ' ';
     }
 

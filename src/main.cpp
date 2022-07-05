@@ -8,7 +8,7 @@ int main()
 {
     std::ofstream fout("out.txt");
 
-    size_t constexpr BENCHMARKS = 20;
+    constexpr size_t BENCHMARKS = 20;
 
     for (size_t i = 2500; i <= 50000; i += 2500) {
         std::cout << "Running for " << i << 'x' << i << " matrices" << std::endl;
@@ -27,5 +27,5 @@ int main()
             << std::endl;
     }
 
-    return 0;
+    return EXIT_SUCCESS;
 }

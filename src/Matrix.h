@@ -8,14 +8,14 @@ class Matrix
 public:
     explicit Matrix(size_t size, T min, T max);
 
-    Matrix(Matrix const &) = delete;
+    Matrix(const Matrix &) = delete;
 
     void transposeNaive();
 
     void transposeCacheOblivious(size_t blockSize = 32);
 
     template <class U>
-    friend std::ostream &operator<<(std::ostream &, Matrix<U> const &);
+    friend std::ostream & operator<<(std::ostream &, const Matrix<U> &);
 
 private:
     size_t const size;
